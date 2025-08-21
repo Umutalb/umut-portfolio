@@ -97,3 +97,8 @@ typings/
 *.jpg
 *.jpeg
 *.pdf
+
+# Icon ve SVG dosyalarını hariç tut
+*.ico
+*.svg
+
