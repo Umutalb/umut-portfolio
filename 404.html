@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Sayfa Kayboldu!</title>
+    <!-- Site Icon (Simplified for iOS compatibility) -->
+    <link rel="website icon" type="png" href="favicon-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white flex flex-col items-center justify-center min-h-screen transition-colors duration-300">
+    <!-- Dil ve Tema Butonları -->
+    <div class="absolute top-4 right-4 flex gap-2 z-10">
+        <button onclick="toggleLang()" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium">
+            <span id="langBtn">EN</span>
+        </button>
+        <button onclick="toggleTheme()" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i id="themeBtn" class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="flex flex-col items-center animate-slide-up">
+        <!-- Profil Fotoğrafı -->
+        <div class="mb-8">
+            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-primary-500 to-purple-600 p-1 animate-float shadow-xl">
+                <img src="profil.jpeg" alt="Umut Albayrak" class="w-full h-full rounded-full object-cover">
+            </div>
+        </div>
+
+        <!-- 404 Başlığı -->
+        <h1 class="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">404</h1>
+        
+        <!-- Hata Mesajları -->
+        <p id="title" class="text-2xl md:text-3xl font-semibold mb-4">Oops! Burada bir şeyler kaybolmuş gibi...</p>
+        <p class="text-lg text-gray-700 dark:text-gray-300 max-w-xl text-center mb-8">
+            <span id="desc">Aradığın sayfa galiba backend'e deploy edilmemiş!<br><span class="inline-block mt-2">Ama üzülme, <span class="font-bold text-primary-600">Umut</span> seni anasayfaya ışınlayabilir 🚀</span></span>
+        </p>
+        
+        <!-- Ana Sayfa Butonu -->
+        <a href="index.html" class="btn-primary mb-6">
+            <i class="fas fa-arrow-left mr-2"></i> <span id="homeBtn">Anasayfaya Dön</span>
+        </a>
+        
+        <!-- Sosyal Medya Linkleri -->
+        <div class="flex justify-center space-x-6 mt-4">
+            <a href="https://github.com/Umutalb" target="_blank" rel="noopener noreferrer" aria-label="GitHub profilini yeni sekmede aç" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/umut-albayrak24/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profilini yeni sekmede aç" class="social-link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.hackerrank.com/certificates/iframe/2317d5e24fe8" target="_blank" rel="noopener noreferrer" aria-label="HackerRank sertifikasını yeni sekmede aç" class="social-link">
+                <i class="fab fa-hackerrank"></i>
+            </a>
+            <a href="mailto:umut.albayrakk24@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let currentLang = 'tr';
+        let isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        const texts = {
+            tr: {
+                title: 'Oops! Burada bir şeyler kaybolmuş gibi...',
+                desc: 'Aradığın sayfa galiba backend\'e deploy edilmemiş!<br><span class="inline-block mt-2">Ama üzülme, <span class="font-bold text-primary-600">Umut</span> seni anasayfaya ışınlayabilir 🚀</span>',
+                home: 'Anasayfaya Dön'
+            },
+            en: {
+                title: 'Oops! Looks like something is lost here...',
+                desc: 'The page you are looking for probably hasn\'t been deployed to the backend!<br><span class="inline-block mt-2">But don\'t worry, <span class="font-bold text-primary-600">Umut</span> can teleport you to the homepage 🚀</span>',
+                home: 'Back to Home'
+            }
+        };
+
+        function updateTexts() {
+            document.getElementById('title').innerHTML = texts[currentLang].title;
+            document.getElementById('desc').innerHTML = texts[currentLang].desc;
+            document.getElementById('homeBtn').innerHTML = texts[currentLang].home;
+            document.getElementById('langBtn').innerHTML = currentLang === 'tr' ? 'EN' : 'TR';
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            updateTexts();
+        }
+
+        function updateTheme() {
+            if(isDark) {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark');
+                document.getElementById('themeBtn').className = 'fas fa-sun';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('dark');
+                document.getElementById('themeBtn').className = 'fas fa-moon';
+            }
+        }
+
+        function toggleTheme() {
+            isDark = !isDark;
+            updateTheme();
+        }
+
+        // Sayfa yüklendiğinde tema ve dil uygula
+        window.addEventListener('DOMContentLoaded', function() {
+            updateTheme();
+            updateTexts();
+        });
+    </script>
+</body>
+</html>

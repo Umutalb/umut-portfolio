@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umut Albayrak - Backend Developer</title>
+    
+    <!-- Site Icon (Favicon) - Simplified for iOS compatibility -->
+    <link rel="website icon" type="png" href="favicon-512x512.png?v3.2">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v3.2">
+    
+    <!-- Inform browsers that site supports both light and dark color schemes -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    
+    <!-- SEO: Meta Description (TR) -->
+    <meta name="description" content="C# ASP.NET Core ve RESTful servislerde uzmanlaşan junior backend developer. Projeler, sertifikalar ve iletişim.">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://umutalbayrak.dev/">
+    
+    <!-- Open Graph (TR) -->
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Umut Albayrak — Backend Developer">
+    <meta property="og:description" content="C# ASP.NET Core ve RESTful servislerde uzmanlaşan junior backend developer. Projeler, sertifikalar ve iletişim.">
+    <meta property="og:url" content="https://umutalbayrak.dev/">
+    <meta property="og:site_name" content="Umut Albayrak">
+    <meta property="og:image" content="https://umutalbayrak.dev/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Mor degrade arka plan üzerinde UA monogram ve 'Umut Albayrak — Backend Developer' başlıklı sosyal paylaşım görseli.">
+    
+    <!-- Twitter Cards (TR) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Umut Albayrak — Backend Developer">
+    <meta name="twitter:description" content="C# ASP.NET Core ve RESTful servislerde uzmanlaşan junior backend developer. Projeler, sertifikalar ve iletişim.">
+    <meta name="twitter:image" content="https://umutalbayrak.dev/og-image.png">
+    <meta name="twitter:image:alt" content="Mor degrade arka plan üzerinde UA monogram ve 'Umut Albayrak — Backend Developer' başlıklı sosyal paylaşım görseli.">
+    
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const shouldUseDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+            
+            if (shouldUseDark) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    
+    
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300" 
+      x-data="portfolioApp()" 
+      x-init="init()">
+    <!-- Preloader Overlay -->
+    <div id="preloader" role="status" aria-live="polite" aria-hidden="true"
+         x-show="preloaderVisible"
+         x-transition.opacity.duration.200ms
+         class="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-gray-900">
+        <div class="w-[360px] md:w-[420px] select-none font-mono text-sm">
+            <div class="rounded-lg border border-gray-200 dark:border-gray-800 shadow-2xl overflow-hidden bg-gray-900 text-green-400">
+                <div class="px-3 py-2 bg-gray-800 text-gray-200 flex items-center gap-2">
+                    <i class="fas fa-terminal"></i>
+                    <span>boot@umutalbayrak.dev</span>
+                </div>
+                <div class="p-4 space-y-2">
+                    <div><span class="text-gray-500">&gt;</span> starting services <span x-text="spinnerChar">|</span></div>
+                    <div><span class="text-gray-500">&gt;</span> initializing API endpoints...</div>
+                    <div class="mt-3">
+                        <div class="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                            <div class="h-full bg-green-500 transition-all duration-75"
+                                 :style="`width: ${preloaderProgress}%`"
+                                 aria-hidden="true"></div>
+                        </div>
+                        <div class="mt-1 text-right text-xs text-gray-400" x-text="Math.round(preloaderProgress) + '%'">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="fixed top-0 right-2 md:right-4 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg shadow-lg p-2 md:p-3 mt-16 md:mt-20 transition-all duration-300 scroll-indicator opacity-100" aria-hidden="true">
+        <div class="flex flex-col items-center space-y-1">
+            <!-- Progress Bar -->
+            <div class="w-10 md:w-12 h-1.5 md:h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full transition-all duration-150 ease-out"
+                     :style="`width: ${scrollProgress}%`"></div>
+            </div>
+            <!-- Percentage Text -->
+            <span class="text-xs md:text-xs font-semibold text-primary-600 dark:text-primary-400" 
+                  x-text="Math.round(scrollProgress) + '%'"></span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center space-x-2">
+                    <img src="ua-logo.svg" alt="UA logo" class="w-8 h-8 hidden dark:block" loading="eager" width="32" height="32">
+                    <img src="ua-logo.svg" alt="UA logo" class="w-8 h-8 block dark:hidden" loading="eager" width="32" height="32">
+                    <span class="text-xl font-bold text-primary-600 dark:text-primary-400">Umut Albayrak</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link" x-text="translations[language].nav.home"></a>
+                        <a href="#about" class="nav-link" x-text="translations[language].nav.about"></a>
+                        <a href="#projects" class="nav-link" x-text="translations[language].nav.projects"></a>
+                        <a href="#certificates" class="nav-link" x-text="translations[language].nav.certificates"></a>
+                        <a href="#contact" class="nav-link" x-text="translations[language].nav.contact"></a>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex items-center space-x-4">
+                    <!-- Language Toggle -->
+                    <button @click="toggleLanguage()" 
+                            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <span x-text="language === 'tr' ? 'EN' : 'TR'" class="text-sm font-medium"></span>
+                    </button>
+
+                    <!-- Theme Toggle -->
+                    <button @click="toggleTheme()" 
+                            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                            aria-label="Tema değiştir">
+                        <i :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2" aria-label="Mobil menüyü aç/kapat">
+                        <i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t dark:border-gray-700">
+                    <a href="#home" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.home"></a>
+                    <a href="#about" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.about"></a>
+                    <a href="#projects" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.projects"></a>
+                    <a href="#certificates" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.certificates"></a>
+                    <a href="#contact" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.contact"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-violet-100 dark:from-gray-900 dark:to-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center animate-slide-up">
+                <!-- Profile Image -->
+                <div class="mb-8">
+                    <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-primary-500 to-purple-600 p-1 animate-float">
+                        <img src="profil.jpeg" 
+                             alt="Umut Albayrak" 
+                             class="w-full h-full rounded-full object-cover shadow-lg">
+                    </div>
+                </div>
+
+                <!-- Name and Title -->
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">
+                    Umut Albayrak
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8" x-text="translations[language].hero.title"></p>
+                
+                <!-- Description -->
+                <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed" x-text="translations[language].hero.description"></p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#projects" class="btn-primary">
+                        <span x-text="translations[language].hero.viewProjects"></span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 border border-primary-600 rounded-lg text-primary-600 dark:text-primary-400 font-semibold transition-all duration-200 hover:bg-primary-600 hover:text-white hover:shadow-lg hover:-translate-y-1">
+                        <span x-text="translations[language].hero.contact"></span>
+                        <i class="fas fa-envelope ml-2"></i>
+                    </a>
+
+                    <a href="update_umut_resume.pdf" 
+                       download="Umut_Albayrak-CV.pdf" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="CV dosyasını indir - Umut Albayrak özgeçmişi PDF formatında"
+                       class="inline-flex items-center gap-2 px-5 py-2 border border-primary-600 rounded-full 
+                              text-primary-600 dark:text-primary-400 font-semibold text-base 
+                              hover:bg-primary-600 hover:text-white transition-all duration-200">
+                       <img src="file.png" alt="Download Icon" class="w-4 h-4">
+                       <span>CV</span>
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-6 mt-12">
+                    <a href="https://github.com/Umutalb" target="_blank" rel="noopener noreferrer" aria-label="GitHub profiline git (yeni sekme)" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/umut-albayrak24/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profiline git (yeni sekme)" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.hackerrank.com/certificates/iframe/2317d5e24fe8" target="_blank" rel="noopener noreferrer" aria-label="HackerRank sertifika sayfasını aç (yeni sekme)" class="social-link">
+                        <i class="fab fa-hackerrank"></i>
+                    </a>
+                    <a href="mailto:umut.albayrakk24@gmail.com" aria-label="E-posta gönder" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4" x-text="translations[language].about.title"></h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300" x-text="translations[language].about.subtitle"></p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4" x-text="translations[language].about.whoAmI"></h3>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed" x-text="translations[language].about.description"></p>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-4" x-text="translations[language].about.description2"></p>
+                    </div>
+
+                    <!-- Education -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 flex items-center">
+                            <i class="fas fa-graduation-cap text-primary-600 mr-3"></i>
+                            <span x-text="translations[language].about.education"></span>
+                        </h4>
+                        <p class="text-gray-700 dark:text-gray-300" x-text="translations[language].about.educationDetail"></p>
+                    </div>
+
+                    <!-- Experience -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 flex items-center">
+                            <i class="fas fa-briefcase text-primary-600 mr-3"></i>
+                            <span x-text="translations[language].about.experience"></span>
+                        </h4>
+                        <p class="text-gray-700 dark:text-gray-300" x-text="translations[language].about.experienceDetail"></p>
+                    </div>
+                </div>
+
+                <!-- Right Column - Skills -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8" x-text="translations[language].about.skills"></h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <!-- Backend Skills -->
+                        <div class="skill-card">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-server text-primary-600 mr-3"></i>
+                                <span class="font-semibold" x-text="translations[language].about.backend"></span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="skill-item">C# ASP.NET Core</div>
+                                <div class="skill-item">Web API</div>
+                                <div class="skill-item">RESTful Services</div>
+                            </div>
+                        </div>
+
+                        <!-- Database Skills -->
+                        <div class="skill-card">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-database text-primary-600 mr-3"></i>
+                                <span class="font-semibold" x-text="translations[language].about.database"></span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="skill-item">SQL Server</div>
+                                <div class="skill-item">Firebase</div>
+                                <div class="skill-item">Database Design</div>
+                            </div>
+                        </div>
+
+                        <!-- Architecture Skills -->
+                        <div class="skill-card">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-sitemap text-primary-600 mr-3"></i>
+                                <span class="font-semibold" x-text="translations[language].about.architecture"></span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="skill-item">Clean Architecture</div>
+                                <div class="skill-item">Design Patterns</div>
+                                <div class="skill-item">SOLID Principles</div>
+                            </div>
+                        </div>
+
+                        <!-- Tools Skills -->
+                        <div class="skill-card">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-tools text-primary-600 mr-3"></i>
+                                <span class="font-semibold" x-text="translations[language].about.tools"></span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="skill-item">Git</div>
+                                <div class="skill-item">Scrum</div>
+                                <div class="skill-item">Team Leadership</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4" x-text="translations[language].projects.title"></h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300" x-text="translations[language].projects.subtitle"></p>
+            </div>
+
+            <!-- Featured Projects -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-center" x-text="translations[language].projects.featuredRepos"></h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <template x-for="project in featuredProjects" :key="project.name">
+                        <div class="project-card">
+                            <div class="flex items-start justify-between mb-4">
+                                <h4 class="font-bold text-lg" x-text="project.name"></h4>
+                                <div class="flex space-x-2">
+                                    <a :href="project.html_url" target="_blank" rel="noopener noreferrer" :aria-label="`Projeyi GitHub'da aç: ${project.name} (yeni sekme)`" class="text-primary-600 hover:text-primary-700">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4" x-text="project.description || translations[language].projects.noDescription"></p>
+                            
+                            <!-- Technologies -->
+                            <div class="mb-4" x-show="project.language">
+                                <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded-full" x-text="project.language"></span>
+                            </div>
+                            
+                            <!-- Stats and Actions -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-4">
+                                    <span class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-star mr-1"></i>
+                                        <span x-text="project.stargazers_count || 0"></span>
+                                    </span>
+                                    <span class="flex items-center text-sm text-gray-500">
+                                        <i class="fas fa-code-branch mr-1"></i>
+                                        <span x-text="project.forks_count || 0"></span>
+                                    </span>
+                                </div>
+                                <a :href="project.html_url" target="_blank" rel="noopener noreferrer" class="btn-sm-primary">
+                                    <i class="fab fa-github mr-1"></i>
+                                    <span x-text="translations[language].projects.viewRepo"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="text-center mt-8">
+                    <a href="https://github.com/Umutalb?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        <span x-text="translations[language].projects.viewAll"></span>
+                        <i class="fab fa-github ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4" x-text="translations[language].certificates.title"></h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300" x-text="translations[language].certificates.description"></p>
+            </div>
+            
+            <div class="flex justify-center">
+                <div class="certificate-card max-w-md cursor-pointer" @click="openCertificateModal()">
+                    <div class="relative overflow-hidden rounded-xl">
+                        <img src="hackerrankserfitika.jpg" 
+                             alt="HackerRank Certificate" 
+                             class="w-full h-auto object-cover transition-transform duration-300 hover:scale-105">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-search-plus text-white text-3xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-lg mb-2" x-text="translations[language].certificates.hackerrank.title"></h3>
+                        <p class="text-gray-600 dark:text-gray-400" x-text="translations[language].certificates.hackerrank.description"></p>
+                                <a href="https://www.hackerrank.com/certificates/iframe/2317d5e24fe8" 
+                                    target="_blank" rel="noopener noreferrer" aria-label="HackerRank sertifika sayfasını aç (yeni sekme)"
+                                    class="inline-flex items-center mt-3 text-[#a35bf3] hover:text-[#a35bf3] font-medium">
+                            <span x-text="translations[language].certificates.hackerrank.viewOnline"></span>
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Identity Section -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white" x-text="translations[language].developerIdentity.title"></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300" x-text="translations[language].developerIdentity.subtitle"></p>
+            </div>
+            
+            <!-- Code Snippet -->
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-gray-900 rounded-lg shadow-2xl overflow-hidden">
+                    <!-- Terminal Header -->
+                    <div class="flex items-center px-4 py-3 bg-gray-800">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div class="flex-1 text-center">
+                            <span class="text-gray-300 text-sm font-mono">umut.js</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Code Content -->
+                    <div class="p-6 font-mono text-sm overflow-x-auto">
+                        <div class="text-yellow-400">const <span class="text-blue-400">umut</span> = {</div>
+                        <div class="ml-4 space-y-1">
+                            <div><span class="text-blue-400">location</span>: <span class="text-green-400">"Istanbul, Turkey 🏙️"</span>,</div>
+                            <div><span class="text-blue-400">education</span>: <span class="text-green-400">"Computer Engineering Student 🎓"</span>,</div>
+                            <div><span class="text-blue-400">currentYear</span>: <span class="text-green-400">"3rd Year"</span>,</div>
+                            <div><span class="text-blue-400">currentlyLearning</span>: [<span class="text-green-400">"C#"</span>, <span class="text-green-400">"ASP.NET Core"</span>, <span class="text-green-400">"Firebase"</span>],</div>
+                            <div><span class="text-blue-400">focusArea</span>: <span class="text-green-400">"Backend Development"</span>,</div>
+                            <div><span class="text-blue-400">goal</span>: <span class="text-green-400">"Building scalable Web APIs & secure systems"</span>,</div>
+                            <div><span class="text-blue-400">funFact</span>: <span class="text-green-400">"I debug with coffee ☕"</span></div>
+                        </div>
+                        <div class="text-yellow-400">};</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4" x-text="translations[language].contact.title"></h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300" x-text="translations[language].contact.subtitle"></p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6" x-text="translations[language].contact.getInTouch"></h3>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8" x-text="translations[language].contact.description"></p>
+                    </div>
+
+                    <!-- Contact Methods -->
+                    <div class="space-y-6">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Email</h4>
+                                <a href="mailto:umut.albayrakk24@gmail.com" class="text-[#a35bf3] hover:text-[#a35bf3]">
+                                    umut.albayrakk24@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/umut-albayrak24/" target="_blank" rel="noopener noreferrer" class="text-[#a35bf3] hover:text-[#a35bf3]">
+                                    linkedin.com/in/umut-albayrak24
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">GitHub</h4>
+                                <a href="https://github.com/Umutalb" target="_blank" rel="noopener noreferrer" class="text-[#a35bf3] hover:text-[#a35bf3]">
+                                    github.com/Umutalb
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-hackerrank"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">HackerRank</h4>
+                                <a href="https://www.hackerrank.com/certificates/iframe/2317d5e24fe8" target="_blank" rel="noopener noreferrer" class="text-[#a35bf3] hover:text-[#a35bf3]">
+                                    <span x-text="translations[language].contact.certificate"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6" x-text="translations[language].contact.sendMessage"></h3>
+                    <form @submit.prevent="sendMessage()" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2" x-text="translations[language].contact.name"></label>
+                            <input type="text" x-model="contactForm.name" required
+                                   class="form-input" 
+                                   :placeholder="translations[language].contact.namePlaceholder">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2" x-text="translations[language].contact.email"></label>
+                            <input type="email" x-model="contactForm.email" required
+                                   class="form-input" 
+                                   :placeholder="translations[language].contact.emailPlaceholder">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2" x-text="translations[language].contact.subject"></label>
+                            <input type="text" x-model="contactForm.subject" required
+                                   class="form-input" 
+                                   :placeholder="translations[language].contact.subjectPlaceholder">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2" x-text="translations[language].contact.message"></label>
+                            <textarea x-model="contactForm.message" required rows="5"
+                                      class="form-input" 
+                                      :placeholder="translations[language].contact.messagePlaceholder"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full" :disabled="formSubmitting">
+                            <span x-show="!formSubmitting" x-text="translations[language].contact.send"></span>
+                            <span x-show="formSubmitting" x-text="translations[language].contact.sending"></span>
+                            <i class="fas fa-paper-plane ml-2" x-show="!formSubmitting"></i>
+                            <i class="fas fa-spinner fa-spin ml-2" x-show="formSubmitting"></i>
+                        </button>
+                    </form>
+
+                    <!-- Form Status -->
+                    <div x-show="formStatus && formStatus.type" 
+                         :class="formStatus?.type === 'success' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'"
+                         class="mt-4 p-4 rounded-lg">
+                        <span x-text="formStatus?.message"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div x-show="certificateModalOpen" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         class="fixed inset-0 z-50 overflow-y-auto"
+         role="dialog" 
+         aria-modal="true"
+         aria-labelledby="certificate-modal-title"
+         :aria-hidden="!certificateModalOpen"
+         style="display: none;">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div class="fixed inset-0 transition-opacity" @click="closeCertificateModal()">
+                <div class="absolute inset-0 bg-black opacity-75"></div>
+            </div>
+
+            <!-- Modal content -->
+            <div class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+                <div class="relative">
+                    <button @click="closeCertificateModal()" 
+                            class="absolute top-4 right-4 z-10 bg-black bg-opacity-50 hover:bg-opacity-75 text-white rounded-full p-2 transition-all"
+                            aria-label="Sertifika penceresini kapat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <img src="hackerrankserfitika.jpg" 
+                         alt="HackerRank Certificate" 
+                         class="w-full h-auto">
+                </div>
+                <div class="px-6 py-4 text-center">
+                    <h4 id="certificate-modal-title" class="text-lg font-semibold mb-2" x-text="translations[language].certificates.hackerrank.modalTitle"></h4>
+                          <a href="https://www.hackerrank.com/certificates/iframe/2317d5e24fe8" 
+                              target="_blank" rel="noopener noreferrer" aria-label="HackerRank sertifika sayfasını aç (yeni sekme)"
+                              class="btn-primary">
+                        <span x-text="translations[language].about.viewOnHackerRank"></span>
+                        <i class="fab fa-hackerrank ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button @click="scrollToTop()" 
+            class="fixed bottom-4 right-4 z-40 bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            aria-label="Yukarı çık">
+        <i class="fas fa-chevron-up text-lg"></i>
+    </button>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400">
+                    © 2025 Umut Albayrak. 
+                    <span x-text="translations[language].footer.rights"></span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

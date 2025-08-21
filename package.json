@@ -1,0 +1,26 @@
+{
+  "name": "umut-albayrak-portfolio",
+  "version": "1.0.0",
+  "description": "Modern portfolio website for Umut Albayrak",
+  "main": "index.html",
+  "scripts": {
+    "build-css": "tailwindcss -i ./src/input.css -o ./css/styles.css --watch",
+    "dev": "npm run build-css & live-server --port=8000",
+  "build": "tailwindcss -i ./src/input.css -o ./css/styles.css --minify",
+  "og:export": "node ./scripts/export-og-png.js",
+  "favicons": "node ./scripts/export-favicons.js"
+  },
+  "keywords": [
+    "portfolio",
+    "tailwind",
+    "responsive",
+    "dark-mode"
+  ],
+  "author": "Umut Albayrak",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+  "live-server": "^1.2.2",
+  "sharp": "^0.33.4"
+  }
+}

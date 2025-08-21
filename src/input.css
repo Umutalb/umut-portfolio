@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Components */
+@layer components {
+  /* Navigation */
+  .nav-link {
+    @apply text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200;
+  }
+
+  .mobile-nav-link {
+    @apply text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center px-8 py-3 bg-transparent border-2 border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white font-semibold rounded-lg transition-all duration-200;
+  }
+
+  .btn-sm-primary {
+    @apply inline-flex items-center px-3 py-1 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-md transition-all duration-200;
+  }
+
+  /* Social Links */
+  .social-link {
+    @apply w-12 h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-gray-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+  }
+
+  .footer-social-link {
+    @apply w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-all duration-200;
+  }
+
+  /* Cards */
+  .skill-card {
+    @apply bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+  }
+
+  .skill-item {
+    @apply text-sm text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-3 py-1 rounded-full inline-block m-0.5;
+  }
+
+  .stat-card {
+    @apply bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+  }
+
+  .project-card {
+    @apply bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+  }
+
+  /* Contact */
+  .contact-item {
+    @apply flex items-center space-x-4;
+  }
+
+  .contact-icon {
+    @apply w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-400;
+  }
+
+  /* Form */
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors;
+  }
+
+  /* Certificate */
+  .certificate-card {
+    @apply bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-500;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Project descriptions - madde madde göstermek için */
+.text-gray-600 {
+  white-space: pre-line;
+}
