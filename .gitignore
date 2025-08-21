@@ -86,3 +86,14 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# =============== ÖZEL EKLEMELER ===============
+
+# IDE klasörleri
+.vscode/
+
+# Resimler ve dökümanlar
+*.png
+*.jpg
+*.jpeg
+*.pdf
