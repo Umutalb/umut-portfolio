@@ -35,7 +35,11 @@ function portfolioApp() {
                     title: 'Backend Developer & Bilgisayar Mühendisliği Öğrencisi',
                     description: 'C# ASP.NET Core ve RESTful servisler konusunda uzmanlaşan, ölçeklenebilir ve güvenilir backend sistemleri geliştiren junior developer.',
                     viewProjects: 'Projelerimi İncele',
-                    contact: 'İletişime Geç'
+                    contact: 'İletişime Geç',
+                    community: {
+                        ieee: 'IEEE CS TR SAC',
+                        devcom: 'Developer Community'
+                    }
                 },
                 about: {
                     title: 'Hakkımda',
@@ -55,7 +59,10 @@ function portfolioApp() {
                     certificates: 'Sertifikalarım',
                     certificateDescription: 'Yazılım geliştirme yetkinliklerimi gösteren sertifika',
                     viewOnline: 'Online Görüntüle',
-                    viewOnHackerRank: 'HackerRank\'te Görüntüle'
+                    viewOnHackerRank: 'HackerRank\'te Görüntüle',
+                    communityTitle: 'Topluluk Katılımı',
+                    communityIEEE: 'IEEE Computer Society Türkiye (SAC) – Proje ekibinde aktif rol; öğrenci odaklı teknik girişimlerde katkı.',
+                    communityDevCom: 'Developer Community – Yönetim ekibi üyesi; mini backend eğitim / proje serisini eğitmen ve moderatör olarak yürütüyorum.'
                 },
                 certificates: {
                     title: 'Sertifikalarım',
@@ -120,7 +127,11 @@ function portfolioApp() {
                     title: 'Backend Developer & Computer Engineering Student',
                     description: 'A junior developer specializing in C# ASP.NET Core and RESTful services, developing scalable and reliable backend systems.',
                     viewProjects: 'View My Projects',
-                    contact: 'Get In Touch'
+                    contact: 'Get In Touch',
+                    community: {
+                        ieee: 'IEEE CS TR SAC',
+                        devcom: 'Dev Community – Backend Series'
+                    }
                 },
                 about: {
                     title: 'About Me',
@@ -140,7 +151,10 @@ function portfolioApp() {
                     certificates: 'My Certificates',
                     certificateDescription: 'Certificate showcasing my software development skills',
                     viewOnline: 'View Online',
-                    viewOnHackerRank: 'View on HackerRank'
+                    viewOnHackerRank: 'View on HackerRank',
+                    communityTitle: 'Community & Involvement',
+                    communityIEEE: 'IEEE Computer Society Turkey (SAC) – Active project team member contributing to student-focused technical initiatives.',
+                    communityDevCom: 'Developer Community – Core team member; leading a mini backend training & project series as instructor and moderator.'
                 },
                 certificates: {
                     title: 'My Certificates',

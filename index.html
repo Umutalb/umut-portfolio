@@ -187,10 +187,28 @@
                 <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8" x-text="translations[language].hero.title"></p>
                 
                 <!-- Description -->
-                <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed" x-text="translations[language].hero.description"></p>
+                <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed" x-text="translations[language].hero.description"></p>
+
+                <!-- Community Badges (Hero) -->
+                <div class="flex flex-wrap items-center justify-center gap-6 mb-16">
+                    <div class="group flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur border border-white/20 dark:border-white/10 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                        <div class="relative">
+                            <img src="IEEE.jpg" alt="IEEE CS TR SAC" class="w-5 h-5 rounded-lg object-cover" loading="lazy" width="20" height="20">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-500/30 to-primary-500/30 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
+                        </div>
+                        <span class="text-sm font-medium text-white/90 dark:text-white/80 group-hover:text-white transition-colors" x-text="translations[language].hero.community.ieee"></span>
+                    </div>
+                    <div class="group flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur border border-white/20 dark:border-white/10 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                        <div class="relative">
+                            <img src="dev_community.jpg" alt="Developer Community" class="w-5 h-5 rounded-lg object-cover" loading="lazy" width="20" height="20">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
+                        </div>
+                        <span class="text-sm font-medium text-white/90 dark:text-white/80 group-hover:text-white transition-colors" x-text="translations[language].hero.community.devcom"></span>
+                    </div>
+                </div>
 
                 <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
                     <a href="#projects" class="btn-primary">
                         <span x-text="translations[language].hero.viewProjects"></span>
                         <i class="fas fa-arrow-right ml-2"></i>
@@ -199,9 +217,10 @@
                         <span x-text="translations[language].hero.contact"></span>
                         <i class="fas fa-envelope ml-2"></i>
                     </a>
+                </div>
 
-                          <!-- CV Buttons -->
-                          <div class="flex flex-col sm:flex-row gap-4">
+                <!-- CV Buttons Section (Separated) -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
                                 <a href="Umut_Resume_EN.pdf" 
                                     download="Umut_Albayrak-CV-EN.pdf" 
                                     target="_blank" 
@@ -224,7 +243,6 @@
                                     <img src="file.png" alt="İndir İkonu" class="w-4 h-4">
                                     <span>CV (TR)</span>
                                 </a>
-                          </div>
                 </div>
 
                 <!-- Social Links -->
@@ -261,6 +279,24 @@
                         <h3 class="text-2xl font-bold mb-4" x-text="translations[language].about.whoAmI"></h3>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed" x-text="translations[language].about.description"></p>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-4" x-text="translations[language].about.description2"></p>
+                    </div>
+
+                    <!-- Community & Involvement -->
+                    <div class="p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fas fa-users text-primary-600 text-sm"></i>
+                            <h4 class="text-lg font-semibold" x-text="translations[language].about.communityTitle"></h4>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <img src="IEEE.jpg" alt="IEEE CS TR SAC" class="w-8 h-8 rounded object-cover" loading="lazy" width="32" height="32">
+                                <p class="text-sm text-gray-700 dark:text-gray-300" x-text="translations[language].about.communityIEEE"></p>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <img src="dev_community.jpg" alt="Developer Community" class="w-8 h-8 rounded object-cover" loading="lazy" width="32" height="32">
+                                <p class="text-sm text-gray-700 dark:text-gray-300" x-text="translations[language].about.communityDevCom"></p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Education -->
