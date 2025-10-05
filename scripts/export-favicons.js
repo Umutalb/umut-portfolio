@@ -8,18 +8,23 @@ const sharp = require('sharp');
 (async () => {
   try {
     const root = __dirname + path.sep + '..';
-    const svgPath = path.join(root, 'ua-logo.svg');
+    const svgPath = path.join(root, 'assets', 'images', 'ua-logo.svg');
     if (!fs.existsSync(svgPath)) {
-      console.error('ua-logo.svg not found at project root.');
+      console.error('ua-logo.svg not found under assets/images.');
       process.exit(1);
     }
 
-  const out16 = path.join(root, 'favicon-16x16.png');
-  const out32 = path.join(root, 'favicon-32x32.png');
-  const out48 = path.join(root, 'favicon-48x48.png');
-  const out64 = path.join(root, 'favicon-64x64.png');
-  const out512 = path.join(root, 'favicon-512x512.png');
-  const apple = path.join(root, 'apple-touch-icon.png');
+    const outDir = path.join(root, 'assets', 'icons');
+    if (!fs.existsSync(outDir)) {
+      fs.mkdirSync(outDir, { recursive: true });
+    }
+
+    const out16 = path.join(outDir, 'favicon-16x16.png');
+    const out32 = path.join(outDir, 'favicon-32x32.png');
+    const out48 = path.join(outDir, 'favicon-48x48.png');
+    const out64 = path.join(outDir, 'favicon-64x64.png');
+    const out512 = path.join(outDir, 'favicon-512x512.png');
+    const apple = path.join(outDir, 'apple-touch-icon.png');
 
   // No SVG/ICO copy; PNG-only export per request
 
@@ -57,7 +62,7 @@ const sharp = require('sharp');
       .png()
       .toFile(apple);
 
-    console.log('Favicons generated:');
+  console.log('Favicons generated to assets/icons:');
     console.log(' -', out16);
     console.log(' -', out32);
     console.log(' -', out48);

@@ -6,11 +6,15 @@ const sharp = require('sharp');
 (async () => {
   try {
     const root = __dirname + '/..';
-    const svgPath = path.join(root, 'og-image.svg');
-    const outPath = path.join(root, 'og-image.png');
+    const ogDir = path.join(root, 'assets', 'og');
+    const svgPath = path.join(ogDir, 'og-image.svg');
+    const outPath = path.join(ogDir, 'og-image.png');
 
+    if (!fs.existsSync(ogDir)) {
+      fs.mkdirSync(ogDir, { recursive: true });
+    }
     if (!fs.existsSync(svgPath)) {
-      throw new Error('og-image.svg not found at project root');
+      throw new Error('assets/og/og-image.svg not found');
     }
 
     const buffer = fs.readFileSync(svgPath);
@@ -18,7 +22,7 @@ const sharp = require('sharp');
       .png({ quality: 90 })
       .toFile(outPath);
 
-    console.log('Generated:', outPath);
+  console.log('Generated:', outPath);
   } catch (err) {
     console.error('OG image export failed:', err.message);
     process.exit(1);
