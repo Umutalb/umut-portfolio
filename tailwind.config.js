@@ -19,6 +19,12 @@ module.exports = {
           700: '#7c3aed',
           800: '#6b21a8',
           900: '#581c87',
+        },
+        // Yumuşak açık mod renkleri
+        light: {
+          bg: '#f8f7f4',      // Ana arka plan - yumuşak krem
+          card: '#fefdfb',     // Kartlar - çok hafif krem
+          surface: '#f5f3ef',  // Yüzeyler - bej ton
         }
       },
       animation: {

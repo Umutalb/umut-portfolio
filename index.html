@@ -57,14 +57,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300" 
+<body class="bg-[#f8f7f4] dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300" 
       x-data="portfolioApp()" 
       x-init="init()">
     <!-- Preloader Overlay -->
     <div id="preloader" role="status" aria-live="polite" aria-hidden="true"
          x-show="preloaderVisible"
          x-transition.opacity.duration.200ms
-         class="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-gray-900">
+         class="fixed inset-0 z-[9999] flex items-center justify-center bg-[#f8f7f4] dark:bg-gray-900">
         <div class="w-[360px] md:w-[420px] select-none font-mono text-sm">
             <div class="rounded-lg border border-gray-200 dark:border-gray-800 shadow-2xl overflow-hidden bg-gray-900 text-green-400">
                 <div class="px-3 py-2 bg-gray-800 text-gray-200 flex items-center gap-2">
@@ -88,7 +88,7 @@
     </div>
     
     <!-- Scroll Progress Indicator -->
-    <div class="fixed top-0 right-2 md:right-4 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg shadow-lg p-2 md:p-3 mt-16 md:mt-20 transition-all duration-300 scroll-indicator opacity-100" aria-hidden="true">
+    <div class="fixed top-0 right-2 md:right-4 z-50 bg-[#fefdfb]/95 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg shadow-lg p-2 md:p-3 mt-16 md:mt-20 transition-all duration-300 scroll-indicator opacity-100" aria-hidden="true">
         <div class="flex flex-col items-center space-y-1">
             <!-- Progress Bar -->
             <div class="w-10 md:w-12 h-1.5 md:h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
@@ -102,21 +102,21 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700">
+    <nav class="fixed top-0 left-0 right-0 bg-[#fefdfb]/95 dark:bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center space-x-2">
-                    <img src="assets/images/ua-logo.svg" alt="UA logo" class="w-8 h-8 hidden dark:block" loading="eager" width="32" height="32">
-                    <img src="assets/images/ua-logo.svg" alt="UA logo" class="w-8 h-8 block dark:hidden" loading="eager" width="32" height="32">
-                    <span class="text-xl font-bold text-primary-600 dark:text-primary-400">Umut Albayrak</span>
+                <div class="flex-shrink-0 flex items-center space-x-2 min-w-[200px]">
+                    <img src="assets/images/ua-logo.svg" alt="UA logo" class="w-8 h-8" loading="eager" width="32" height="32">
+                    <span class="text-xl font-bold text-primary-600 dark:text-primary-400 whitespace-nowrap">Umut Albayrak</span>
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
+                    <div class="ml-10 flex items-baseline space-x-6">
                         <a href="#home" class="nav-link" x-text="translations[language].nav.home"></a>
                         <a href="#about" class="nav-link" x-text="translations[language].nav.about"></a>
+                        <a href="#experience" class="nav-link" x-text="translations[language].nav.experience"></a>
                         <a href="#projects" class="nav-link" x-text="translations[language].nav.projects"></a>
                         <a href="#certificates" class="nav-link" x-text="translations[language].nav.certificates"></a>
                         <a href="#contact" class="nav-link" x-text="translations[language].nav.contact"></a>
@@ -124,22 +124,22 @@
                 </div>
 
                 <!-- Controls -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-4 flex-shrink-0">
                     <!-- Language Toggle -->
                     <button @click="toggleLanguage()" 
-                            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors w-10 h-10 flex items-center justify-center">
                         <span x-text="language === 'tr' ? 'EN' : 'TR'" class="text-sm font-medium"></span>
                     </button>
 
                     <!-- Theme Toggle -->
                     <button @click="toggleTheme()" 
-                            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors w-10 h-10 flex items-center justify-center"
                             aria-label="Tema değiştir">
                         <i :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
                     </button>
 
                     <!-- Mobile Menu Button -->
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2" aria-label="Mobil menüyü aç/kapat">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 w-10 h-10 flex items-center justify-center" aria-label="Mobil menüyü aç/kapat">
                         <i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
                     </button>
                 </div>
@@ -154,9 +154,10 @@
                  x-transition:leave-start="opacity-100 scale-100"
                  x-transition:leave-end="opacity-0 scale-95"
                  class="md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t dark:border-gray-700">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#fefdfb] dark:bg-gray-900 border-t dark:border-gray-700">
                     <a href="#home" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.home"></a>
                     <a href="#about" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.about"></a>
+                    <a href="#experience" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.experience"></a>
                     <a href="#projects" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.projects"></a>
                     <a href="#certificates" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.certificates"></a>
                     <a href="#contact" @click="mobileMenuOpen = false" class="mobile-nav-link" x-text="translations[language].nav.contact"></a>
@@ -191,19 +192,19 @@
 
                 <!-- Community Badges (Hero) -->
                 <div class="flex flex-wrap items-center justify-center gap-6 mb-16">
-                    <div class="group flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur border border-white/20 dark:border-white/10 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                    <div class="group flex items-center gap-2 px-3 py-2 rounded-xl bg-[#fefdfb]/95 dark:bg-white/5 backdrop-blur border border-[#e8e5df] dark:border-white/10 hover:bg-[#f5f3ef] dark:hover:bg-white/10 transition-all duration-300 hover:scale-105 shadow-md">
                         <div class="relative">
                             <img src="assets/images/IEEE.jpg" alt="IEEE CS TR SAC" class="w-5 h-5 rounded-lg object-cover" loading="lazy" width="20" height="20">
                             <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-500/30 to-primary-500/30 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
                         </div>
-                        <span class="text-sm font-medium text-white/90 dark:text-white/80 group-hover:text-white transition-colors" x-text="translations[language].hero.community.ieee"></span>
+                        <span class="text-sm font-medium text-gray-800 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" x-text="translations[language].hero.community.ieee"></span>
                     </div>
-                    <div class="group flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur border border-white/20 dark:border-white/10 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                    <div class="group flex items-center gap-2 px-3 py-2 rounded-xl bg-[#fefdfb]/95 dark:bg-white/5 backdrop-blur border border-[#e8e5df] dark:border-white/10 hover:bg-[#f5f3ef] dark:hover:bg-white/10 transition-all duration-300 hover:scale-105 shadow-md">
                         <div class="relative">
                             <img src="assets/images/dev_community.jpg" alt="Developer Community" class="w-5 h-5 rounded-lg object-cover" loading="lazy" width="20" height="20">
                             <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
                         </div>
-                        <span class="text-sm font-medium text-white/90 dark:text-white/80 group-hover:text-white transition-colors" x-text="translations[language].hero.community.devcom"></span>
+                        <span class="text-sm font-medium text-gray-800 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" x-text="translations[language].hero.community.devcom"></span>
                     </div>
                 </div>
 
@@ -265,7 +266,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+    <section id="about" class="py-20 bg-[#f8f7f4] dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4" x-text="translations[language].about.title"></h2>
@@ -306,15 +307,6 @@
                             <span x-text="translations[language].about.education"></span>
                         </h4>
                         <p class="text-gray-700 dark:text-gray-300" x-text="translations[language].about.educationDetail"></p>
-                    </div>
-
-                    <!-- Experience -->
-                    <div>
-                        <h4 class="text-xl font-semibold mb-3 flex items-center">
-                            <i class="fas fa-briefcase text-primary-600 mr-3"></i>
-                            <span x-text="translations[language].about.experience"></span>
-                        </h4>
-                        <p class="text-gray-700 dark:text-gray-300" x-text="translations[language].about.experienceDetail"></p>
                     </div>
                 </div>
 
@@ -371,6 +363,39 @@
                                 <div class="skill-item">Git</div>
                                 <div class="skill-item">Scrum</div>
                                 <div class="skill-item">Team Leadership</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4" x-text="translations[language].experience.title"></h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300" x-text="translations[language].experience.subtitle"></p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Coderspace Experience -->
+                <div class="bg-[#fefdfb] dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-start gap-6">
+                        <img src="assets/images/coderspace_io_logo.jpg" alt="Coderspace Logo" class="w-16 h-16 rounded-lg object-cover flex-shrink-0" loading="lazy" width="64" height="64">
+                        <div class="flex-1">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1" x-text="translations[language].experience.coderspace.title"></h3>
+                                    <p class="text-sm text-primary-600 dark:text-primary-400 font-medium" x-text="translations[language].experience.coderspace.period"></p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed" x-text="translations[language].experience.coderspace.description"></p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="text-xs px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full" x-text="translations[language].experience.coderspace.tag1"></span>
+                                <span class="text-xs px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full" x-text="translations[language].experience.coderspace.tag2"></span>
+                                <span class="text-xs px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full" x-text="translations[language].experience.coderspace.tag3"></span>
                             </div>
                         </div>
                     </div>
@@ -440,7 +465,7 @@
     </section>
 
     <!-- Certificates Section -->
-    <section id="certificates" class="py-20 bg-white dark:bg-gray-900">
+    <section id="certificates" class="py-20 bg-[#f8f7f4] dark:bg-gray-900">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4" x-text="translations[language].certificates.title"></h2>
@@ -517,7 +542,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+    <section id="contact" class="py-20 bg-[#f8f7f4] dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4" x-text="translations[language].contact.title"></h2>
@@ -585,7 +610,7 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
+                <div class="bg-[#fefdfb] dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
                     <h3 class="text-2xl font-bold mb-6" x-text="translations[language].contact.sendMessage"></h3>
                     <form @submit.prevent="sendMessage()" class="space-y-6">
                         <div>
@@ -656,7 +681,7 @@
             </div>
 
             <!-- Modal content -->
-            <div class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+            <div class="inline-block align-bottom bg-[#fefdfb] dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
                 <div class="relative">
                     <button @click="closeCertificateModal()" 
                             class="absolute top-4 right-4 z-10 bg-black bg-opacity-50 hover:bg-opacity-75 text-white rounded-full p-2 transition-all"

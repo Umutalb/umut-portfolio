@@ -27,13 +27,14 @@ function portfolioApp() {
                 nav: {
                     home: 'Ana Sayfa',
                     about: 'Hakkımda',
+                    experience: 'Deneyim',
                     projects: 'Projeler',
                     certificates: 'Sertifikalarım',
                     contact: 'İletişim'
                 },
                 hero: {
                     title: 'Backend Developer & Bilgisayar Mühendisliği Öğrencisi',
-                    description: 'C# ASP.NET Core ve RESTful servisler konusunda uzmanlaşan, ölçeklenebilir ve güvenilir backend sistemleri geliştiren junior developer.',
+                    description: 'C# ASP.NET Core ve RESTful servisler konusunda uzmanlaşan, ölçeklenebilir ve güvenilir backend sistemleri geliştiren developer. Şu anda Coderspace\'te Event Operations Intern olarak çalışmaktayım.',
                     viewProjects: 'Projelerimi İncele',
                     contact: 'İletişime Geç',
                     community: {
@@ -49,8 +50,6 @@ function portfolioApp() {
                     description2: '2027\'de mezun olmayı hedefliyorum. Kariyer hedefim, yüksek trafikli sistemlerde uzmanlaşmış, clean architecture prensiplerini benimseyen bir Senior Backend Developer olarak sektöre değer katmak.',
                     education: 'Eğitim',
                     educationDetail: 'Bilgisayar Mühendisliği 3. Sınıf Öğrencisi',
-                    experience: 'Deneyim',
-                    experienceDetail: 'Backend Development, API Tasarımı, Scrum Master, Takım Koordinasyonu',
                     skills: 'Yetenekler',
                     backend: 'Arka-Uç',
                     database: 'Veritabanı',
@@ -63,6 +62,22 @@ function portfolioApp() {
                     communityTitle: 'Topluluk Katılımı',
                     communityIEEE: 'IEEE Computer Society Türkiye (SAC) – Proje ekibinde aktif rol; öğrenci odaklı teknik girişimlerde katkı.',
                     communityDevCom: 'Developer Community – Yönetim ekibi üyesi; mini backend eğitim / proje serisini eğitmen ve moderatör olarak yürütüyorum.'
+                },
+                experience: {
+                    title: 'Deneyimlerim',
+                    subtitle: 'Profesyonel çalışma deneyimlerim',
+                    coderspace: {
+                        title: 'Coderspace – Event Operations Intern',
+                        period: 'Ekim 2025 - Devam ediyor',
+                        description: 'Etkinlik operasyon süreçlerinde destek sağlıyorum. Canlı yayın, konuşmacı koordinasyonu ve katılımcı veri düzenleme gibi görevlerde aktif rol alıyorum.',
+                        tag1: 'Etkinlik Yönetimi',
+                        tag2: 'Koordinasyon',
+                        tag3: 'Operasyon'
+                    },
+                    additional: {
+                        title: 'Diğer Deneyimler',
+                        description: 'Backend Development, API Tasarımı, Scrum Master, Takım Koordinasyonu'
+                    }
                 },
                 certificates: {
                     title: 'Sertifikalarım',
@@ -95,7 +110,7 @@ function portfolioApp() {
                     title: 'İletişim',
                     subtitle: 'Benimle iletişime geçin',
                     getInTouch: 'İletişime Geçin',
-                    description: 'Staj ve part-time fırsatları için açığım. Yeni projelerde yer almak için sabırsızlanıyorum! Benimle iletişime geçmekten çekinmeyin.',
+                    description: 'Şu anda Coderspace\'te Event Operations Intern olarak çalışmaktayım. Yeni fırsatlar ve projeler için her zaman açığım! Benimle iletişime geçmekten çekinmeyin.',
                     sendMessage: 'Mesaj Gönder',
                     name: 'İsim',
                     namePlaceholder: 'Adınızı girin',
@@ -119,13 +134,14 @@ function portfolioApp() {
                 nav: {
                     home: 'Home',
                     about: 'About',
+                    experience: 'Experience',
                     projects: 'Projects',
                     certificates: 'Certificates', 
                     contact: 'Contact'
                 },
                 hero: {
                     title: 'Backend Developer & Computer Engineering Student',
-                    description: 'A junior developer specializing in C# ASP.NET Core and RESTful services, developing scalable and reliable backend systems.',
+                    description: 'A developer specializing in C# ASP.NET Core and RESTful services, developing scalable and reliable backend systems. Currently working as an Event Operations Intern at Coderspace.',
                     viewProjects: 'View My Projects',
                     contact: 'Get In Touch',
                     community: {
@@ -141,8 +157,6 @@ function portfolioApp() {
                     description2: 'I aim to graduate in 2027. My career goal is to add value to the industry as a Senior Backend Developer who specializes in high-traffic systems and embraces clean architecture principles.',
                     education: 'Education',
                     educationDetail: 'Computer Engineering 3rd Year Student',
-                    experience: 'Experience',
-                    experienceDetail: 'Backend Development, API Design, Scrum Master, Team Coordination',
                     skills: 'Skills',
                     backend: 'Backend',
                     database: 'Database',
@@ -155,6 +169,22 @@ function portfolioApp() {
                     communityTitle: 'Community & Involvement',
                     communityIEEE: 'IEEE Computer Society Turkey (SAC) – Active project team member contributing to student-focused technical initiatives.',
                     communityDevCom: 'Developer Community – Core team member; leading a mini backend training & project series as instructor and moderator.'
+                },
+                experience: {
+                    title: 'My Experience',
+                    subtitle: 'Professional work experience',
+                    coderspace: {
+                        title: 'Coderspace – Event Operations Intern',
+                        period: 'Oct 2025 - Present',
+                        description: 'I provide support in event operation processes. I take active roles in tasks such as live streaming, speaker coordination, and participant data management.',
+                        tag1: 'Event Management',
+                        tag2: 'Coordination',
+                        tag3: 'Operations'
+                    },
+                    additional: {
+                        title: 'Additional Experience',
+                        description: 'Backend Development, API Design, Scrum Master, Team Coordination'
+                    }
                 },
                 certificates: {
                     title: 'My Certificates',
@@ -187,7 +217,7 @@ function portfolioApp() {
                     title: 'Contact',
                     subtitle: 'Get in touch with me',
                     getInTouch: 'Get In Touch',
-                    description: 'I am open to internship and part-time opportunities. I\'m excited to be part of new projects! Feel free to contact me.',
+                    description: 'I am currently working as an Event Operations Intern at Coderspace. Always open to new opportunities and projects! Feel free to contact me.',
                     sendMessage: 'Send Message',
                     name: 'Name',
                     namePlaceholder: 'Enter your name',

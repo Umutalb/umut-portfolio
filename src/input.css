@@ -1,3 +1,5 @@
+/* stylelint-disable */
+/* eslint-disable */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,7 +30,7 @@
 
   /* Social Links */
   .social-link {
-    @apply w-12 h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-gray-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+    @apply w-12 h-12 bg-[#fefdfb] dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-gray-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
   }
 
   .footer-social-link {
@@ -37,19 +39,19 @@
 
   /* Cards */
   .skill-card {
-    @apply bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+    @apply bg-[#fefdfb] dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
   }
 
   .skill-item {
-    @apply text-sm text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-3 py-1 rounded-full inline-block m-0.5;
+    @apply text-sm text-gray-600 dark:text-gray-400 bg-[#f5f3ef] dark:bg-gray-800 px-3 py-1 rounded-full inline-block m-0.5;
   }
 
   .stat-card {
-    @apply bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+    @apply bg-[#fefdfb] dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
   }
 
   .project-card {
-    @apply bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
+    @apply bg-[#fefdfb] dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200;
   }
 
   /* Contact */
@@ -63,12 +65,12 @@
 
   /* Form */
   .form-input {
-    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors;
+    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#fefdfb] dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors;
   }
 
   /* Certificate */
   .certificate-card {
-    @apply bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+    @apply bg-[#fefdfb] dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
   }
 }
 
@@ -79,7 +81,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-100 dark:bg-gray-900;
+    @apply bg-[#f5f3ef] dark:bg-gray-900;
   }
 
   ::-webkit-scrollbar-thumb {
