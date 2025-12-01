@@ -92,13 +92,3 @@ typings/
 # IDE klasörleri
 .vscode/
 
-# Resimler ve dökümanlar
-*.png
-*.jpg
-*.jpeg
-*.pdf
-
-# Icon ve SVG dosyalarını hariç tut
-*.ico
-*.svg
-
