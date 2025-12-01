@@ -68,8 +68,8 @@ function portfolioApp() {
                     subtitle: 'Profesyonel çalışma deneyimlerim',
                     coderspace: {
                         title: 'Coderspace – Event Operations Intern',
-                        period: 'Ekim 2025 - Devam ediyor',
-                        description: 'Etkinlik operasyon süreçlerinde destek sağlıyorum. Canlı yayın, konuşmacı koordinasyonu ve katılımcı veri düzenleme gibi görevlerde aktif rol alıyorum.',
+                        period: 'Ekim 2025 - Kasım 2025',
+                        description: 'Etkinlik operasyon süreçlerinde destek sağladım. Canlı yayın, konuşmacı koordinasyonu ve katılımcı veri düzenleme gibi görevlerde aktif rol alıyorum.',
                         tag1: 'Etkinlik Yönetimi',
                         tag2: 'Koordinasyon',
                         tag3: 'Operasyon'
@@ -175,8 +175,8 @@ function portfolioApp() {
                     subtitle: 'Professional work experience',
                     coderspace: {
                         title: 'Coderspace – Event Operations Intern',
-                        period: 'Oct 2025 - Present',
-                        description: 'I provide support in event operation processes. I take active roles in tasks such as live streaming, speaker coordination, and participant data management.',
+                        period: 'Oct 2025 - Nov 2025',
+                        description: 'I provided support in event operation processes. I take active roles in tasks such as live streaming, speaker coordination, and participant data management.',
                         tag1: 'Event Management',
                         tag2: 'Coordination',
                         tag3: 'Operations'
